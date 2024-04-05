@@ -11,7 +11,7 @@ export default class Rating extends Field {
       key: "rating",
       unfilledColor: "#ddd",
       filledColor: "yellow",
-      numOfIcons: "5",
+      numOfIcons: 5,
       iconHeight: "25px",
       iconWidth: "25px",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -67,7 +67,7 @@ export default class Rating extends Field {
   render(content) {
     let component = `<div ref="rating">`;
     for (let i = 0; i < this.component.numOfIcons; i++) {
-      component = this.component.icon;
+      component += this.component.icon;
     }
     component = `</div>`;
     return super.render(component);
@@ -82,8 +82,7 @@ export default class Rating extends Field {
         rating.style.fill = color;
       }
     }
-
-    if (!this.component.disabled) {
+    if (!this.component.disabled && this.refs.rating) {
       let icons = this.refs.rating.children;
       for (let i = 0; i < icons.length; i++) {
         let svg = icons[i];
